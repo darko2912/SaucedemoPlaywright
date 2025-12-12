@@ -1,0 +1,21 @@
+{
+  "name": "playwright-projekat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tests:chrome": "playwright test --config=saucedemo.config.ts --project=Chromium --reporter=list --headed",
+    "tests:firefox": "playwright test --config=saucedemo.config.ts --project=Firefox --reporter=list",
+    "tests:webkit": "playwright test --config=saucedemo.config.ts --project=Webkit --reporter=list"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
+  },
+  "dependencies": {
+    "prettier": "^3.7.4"
+  }
+}
