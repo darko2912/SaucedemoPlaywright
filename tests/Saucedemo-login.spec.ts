@@ -21,7 +21,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 test.describe('Positive login tests', () => {
-    test('User can login with valid credentials', async ({ page }) => {
+    test('@smoke - User can login with valid credentials', async ({ page }) => {
         await loginPage.inputUsername(TestData.validUser.username)
         await loginPage.inputPassword(TestData.validUser.password)
         await loginPage.clickOnLoginButton()
@@ -29,7 +29,7 @@ test.describe('Positive login tests', () => {
         await header.assertLogin()
     })
 
-    test('User can logout', async ({ page }) => {
+    test('@smoke - User can logout', async ({ page }) => {
         await loginPage.inputUsername(TestData.validUser.username)
         await loginPage.inputPassword(TestData.validUser.password)
         await loginPage.clickOnLoginButton()

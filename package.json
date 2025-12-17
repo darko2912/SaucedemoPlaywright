@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tests:chrome": "playwright test --config=saucedemo.config.ts --project=Chromium --reporter=list --headed",
-    "tests:firefox": "playwright test --config=saucedemo.config.ts --project=Firefox --reporter=list",
-    "tests:webkit": "playwright test --config=saucedemo.config.ts --project=Webkit --reporter=list"
+    "tests:chrome": "playwright test --config=saucedemo.config.ts --project=Chromium --reporter=html --headed",
+    "tests:firefox": "playwright test --config=saucedemo.config.ts --project=Firefox --reporter=html",
+    "tests:webkit": "playwright test --config=saucedemo.config.ts --project=Webkit --reporter=html",
+    "tests:smoke": "playwright test --config=saucedemo.config.ts --project=Chromium --reporter=html --grep @smoke"
   },
   "keywords": [],
   "author": "",

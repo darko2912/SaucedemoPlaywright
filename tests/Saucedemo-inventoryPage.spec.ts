@@ -49,7 +49,7 @@ test.describe('Sort products', () => {
 })
 
 test.describe('Add product to cart', () => {
-    test('User can add product to the cart', async ({ page }) => {
+    test('@smoke - User can add product to the cart', async ({ page }) => {
         await inventoryPage.addToCart(TestData.productAdd.sauceLabsFleeceJacket)
         await header.assertCartBadge('1')
         await header.clickOnCartIcon()

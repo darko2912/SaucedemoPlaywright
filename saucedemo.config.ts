@@ -6,24 +6,26 @@ const config: PlaywrightTestConfig = {
     testDir: 'tests',
     use: {
         headless: true,
-        viewport: { width: 1280, height: 720},
+        viewport: { width: 1280, height: 720 },
         actionTimeout: 10000,
         ignoreHTTPSErrors: true,
+        trace: "retain-on-first-failure",
         video: "retain-on-failure",
         screenshot: "only-on-failure"
     },
+    reporter: 'html',
     projects: [
         {
             name: "Chromium",
-            use:{browserName: 'chromium'}
+            use: { browserName: 'chromium' }
         },
         {
             name: "Firefox",
-            use: {browserName: 'firefox'}
+            use: { browserName: 'firefox' }
         },
         {
             name: "Webkit",
-            use: {browserName: 'webkit'}
+            use: { browserName: 'webkit' }
         }
     ]
 }

@@ -34,7 +34,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 test.describe('Positive purchase tests', () => {
-    test('User can purchases the product', async ({ page }) => {
+    test('@smoke - User can purchases the product', async ({ page }) => {
         const prices = await cartPage.sumPrices()
         await cartPage.clickOnCheckoutButton()
         await expect(page).toHaveURL(URLs.checkoutStepOneURL)
