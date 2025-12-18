@@ -28,3 +28,27 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+    - name: Upload Playwright Screenshots/Traces
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+          name: playwright-artifacts
+          path: |
+            test-results/screenshots/
+            test-results/traces/
+          retention-days: 30
+
+    - name: Send email on failure
+      if: failure()   # samo ako testovi failuju
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: Playwright tests failed
+        to: ${{ secrets.EMAIL_TO }}
+        from: github-actions@example.com
+        body: Test run failed! Check artifacts at ${{ github.server_url }}/${{ github.repository }}/actions
+        secure: true
+
