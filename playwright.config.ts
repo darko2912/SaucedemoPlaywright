@@ -13,7 +13,9 @@ const config: PlaywrightTestConfig = {
         trace: "retain-on-first-failure",
         screenshot: "only-on-failure"
     },
-    reporter: 'html',
+    reporter: [
+        ['html', { open: 'never' }],
+    ],
     projects: [
         {
             name: "Chromium",
