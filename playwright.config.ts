@@ -4,6 +4,7 @@ const config: PlaywrightTestConfig = {
     timeout: 60000,
     retries: 0,
     testDir: 'tests',
+    fullyParallel: true,
     use: {
         headless: true,
         viewport: { width: 1280, height: 720 },
