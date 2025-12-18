@@ -22,16 +22,16 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('Positive login tests', () => {
     test('@smoke - User can login with valid credentials', async ({ page }) => {
-        await loginPage.inputUsername(TestData.validUser.username)
-        await loginPage.inputPassword(TestData.validUser.password)
+        await loginPage.inputUsername(process.env.APP_USERNAME!)
+        await loginPage.inputPassword(process.env.APP_PASSWORD!)
         await loginPage.clickOnLoginButton()
 
         await header.assertLogin()
     })
 
     test('@smoke - User can logout', async ({ page }) => {
-        await loginPage.inputUsername(TestData.validUser.username)
-        await loginPage.inputPassword(TestData.validUser.password)
+        await loginPage.inputUsername(process.env.APP_USERNAME!)
+        await loginPage.inputPassword(process.env.APP_PASSWORD!)
         await loginPage.clickOnLoginButton()
 
         await header.clickOnHamburgerMenu()
@@ -42,8 +42,8 @@ test.describe('Positive login tests', () => {
 
 test.describe('Negative login tests', () => {
     test('User cannot login with empty field after logout', async ({ page }) => {
-        await loginPage.inputUsername(TestData.validUser.username)
-        await loginPage.inputPassword(TestData.validUser.password)
+        await loginPage.inputUsername(process.env.APP_USERNAME!)
+        await loginPage.inputPassword(process.env.APP_PASSWORD!)
         await loginPage.clickOnLoginButton()
         await header.clickOnHamburgerMenu()
         await menuSidebar.clickOnLogoutButton()
@@ -61,53 +61,53 @@ test.describe('Negative login tests', () => {
     })
 
     test('User cannot login with empty username field', async ({ page }) => {
-        await loginPage.inputPassword(TestData.validUser.password)
+        await loginPage.inputPassword(process.env.APP_PASSWORD!)
         await loginPage.clickOnLoginButton()
 
         await loginPage.errorMessageDisplayed(TestData.errorMessage.requiredUsername)
     })
 
     test('User cannot login with empty password field', async ({ page }) => {
-        await loginPage.inputUsername(TestData.validUser.username)
+        await loginPage.inputUsername(process.env.APP_USERNAME!)
         await loginPage.clickOnLoginButton()
 
         await loginPage.errorMessageDisplayed(TestData.errorMessage.requiredPassword)
     })
 
     test('User cannot login with uppercase letter in username', async ({ page }) => {
-        await loginPage.inputUsername(TestData.validUser.username.toLocaleUpperCase())
-        await loginPage.inputPassword(TestData.validUser.password)
+        await loginPage.inputUsername(process.env.APP_USERNAME!.toLocaleUpperCase())
+        await loginPage.inputPassword(process.env.APP_PASSWORD!)
         await loginPage.clickOnLoginButton()
 
         await loginPage.errorMessageDisplayed(TestData.errorMessage.wrongUsernameAndPassword)
     })
 
     test('User cannot login with uppercase letter in password', async ({ page }) => {
-        await loginPage.inputUsername(TestData.validUser.username)
-        await loginPage.inputPassword(TestData.validUser.password.toLocaleUpperCase())
+        await loginPage.inputUsername(process.env.APP_USERNAME!)
+        await loginPage.inputPassword(process.env.APP_PASSWORD!.toLocaleUpperCase())
         await loginPage.clickOnLoginButton()
 
         await loginPage.errorMessageDisplayed(TestData.errorMessage.wrongUsernameAndPassword)
     })
 
     test('User cannot login with blank space before and after username', async ({ page }) => {
-        await loginPage.inputUsername(" " + TestData.validUser.username)
-        await loginPage.inputPassword(TestData.validUser.password)
+        await loginPage.inputUsername(" " + process.env.APP_USERNAME!)
+        await loginPage.inputPassword(process.env.APP_PASSWORD!)
         await loginPage.clickOnLoginButton()
 
         await loginPage.errorMessageDisplayed(TestData.errorMessage.wrongUsernameAndPassword)
 
         await page.reload()
 
-        await loginPage.inputUsername(TestData.validUser.username + " ")
-        await loginPage.inputPassword(TestData.validUser.password)
+        await loginPage.inputUsername(process.env.APP_USERNAME! + " ")
+        await loginPage.inputPassword(process.env.APP_PASSWORD!)
         await loginPage.clickOnLoginButton()
 
         await loginPage.errorMessageDisplayed(TestData.errorMessage.wrongUsernameAndPassword)
     })
 
     test('User cannot login with invalid password', async ({ page }) => {
-        await loginPage.inputUsername(TestData.validUser.username)
+        await loginPage.inputUsername(process.env.APP_USERNAME!)
         await loginPage.inputPassword(TestData.invalidUser.password)
         await loginPage.clickOnLoginButton()
 

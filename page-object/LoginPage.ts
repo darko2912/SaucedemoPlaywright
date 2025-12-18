@@ -40,8 +40,8 @@ export class LoginPage {
     }
 
     async login() {
-        await this.usernameField.fill(TestData.validUser.username)
-        await this.passwordField.fill(TestData.validUser.password)
+        await this.usernameField.fill(process.env.APP_USERNAME!)
+        await this.passwordField.fill(process.env.APP_PASSWORD!)
         await this.clickOnLoginButton()
     }
 }
