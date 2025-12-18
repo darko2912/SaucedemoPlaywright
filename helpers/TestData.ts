@@ -1,7 +1,7 @@
 export const TestData = {
     validUser: {
-        username: "standard_user",
-        password: "secret_sauce"
+        username: process.env.APP_USERNAME!,
+        password: process.env.APP_PASSWORD!
     },
     invalidUser: {
         username: "testUser",

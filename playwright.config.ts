@@ -1,4 +1,6 @@
 import { PlaywrightTestConfig } from "@playwright/test";
+import 'dotenv/config';
+import { defineConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
     timeout: 60000,
