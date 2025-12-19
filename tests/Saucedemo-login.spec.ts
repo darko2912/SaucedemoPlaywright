@@ -35,7 +35,7 @@ test.describe('Positive login tests', () => {
         await loginPage.clickOnLoginButton()
 
         await header.clickOnHamburgerMenu()
-        //await menuSidebar.clickOnLogoutButton()
+        await menuSidebar.clickOnLogoutButton()
         await loginPage.loginButtonIsVisible()
     })
 })
